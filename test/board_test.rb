@@ -28,7 +28,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_shoots_at_correct_position
-    board = Board.new('comp')
+    board = Board.new('Opponents Grid')
     assert_nil board.spaces['A'][1].ship
     assert_nil board.spaces['A'][2].ship
 
@@ -39,7 +39,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_get_letters
-    board = Board.new('comp')
+    board = Board.new('Opponents Grid')
 
     expected = ['A', 'A', 'A']
     actual = board.get_letters(['A1', 'A2', 'A3'])
@@ -48,7 +48,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_places_ship_object
-    board = Board.new('comp')
+    board = Board.new('Opponents Grid')
 
     board.place_ship(["A1", "A2"])
     expected = "cruiser"
@@ -60,7 +60,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_it_shoots_at_position
-    board = Board.new('comp')
+    board = Board.new('Opponents Grid')
 
     board.shoot("A2")
     expected = "M"
@@ -70,7 +70,7 @@ class BoardTest < Minitest::Test
   end
 
   def test_add_hit_adds_one_to_hits
-    board = Board.new('NAME')
+    board = Board.new('Player Grid')
 
     assert_equal 0, board.hits
     assert_equal 1, board.add_hit
@@ -78,9 +78,9 @@ class BoardTest < Minitest::Test
   end
 
   def test_displays_board
-    board = Board.new('NAME')
+    board = Board.new('Player Grid')
     actual = board.display
-    expected = "\nNAME
+    expected = "\nPlayer Grid
 =========
 . 1 2 3 4
 A        

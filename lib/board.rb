@@ -44,10 +44,10 @@ D #{@spaces['D'][1].state} #{@spaces['D'][2].state} #{@spaces['D'][3].state} #{@
 ========="
   end
 
-  def place_ship(position_input)
-      numbers = get_numbers(position_input)
-      letters = get_letters(position_input)
-      ship = Ship.new(position_input.length)
+  def place_ship(raw_input)
+      numbers = get_numbers(raw_input)
+      letters = get_letters(raw_input)
+      ship = Ship.new(raw_input.length)
       letters.each_with_index do |letter, index|
           @spaces[letter][numbers[index]].fill(ship)
       end
