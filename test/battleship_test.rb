@@ -34,7 +34,7 @@ class BattleshipTest < Minitest::Test
     assert battleship.place_cruiser_if_valid('A1 A2')
   end
 
-  def test_set_two_ship
+  def test_set_cruiser
     battleship = Battleship.new
     assert battleship.set_cruiser('A1 A2')
   end
@@ -45,7 +45,7 @@ class BattleshipTest < Minitest::Test
     assert battleship.place_destroyer_if_valid('A1 A3')
   end
 
-  def test_set_three_ship
+  def test_set_destroyer
     battleship = Battleship.new
     assert battleship.set_destroyer('A1 A3')
   end
@@ -102,12 +102,5 @@ class BattleshipTest < Minitest::Test
 
     assert_equal 0, battleship.turns
     assert_equal 1, battleship.add_turn
-  end
-
-  def test_timer
-    battleship = Battleship.new
-
-    battleship.start_time = 30
-    assert_equal [0, 30], battleship.timer(60)
   end
 end
