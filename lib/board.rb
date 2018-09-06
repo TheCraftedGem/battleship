@@ -16,6 +16,19 @@ class Board
     @hits = 0
   end
 
+  def display
+    update_board_if_ship_sunk
+"\n#{@name}
+=========
+. 1 2 3 4
+A #{@spaces['A'][1].state} #{@spaces['A'][2].state} #{@spaces['A'][3].state} #{@spaces['A'][4].state}
+B #{@spaces['B'][1].state} #{@spaces['B'][2].state} #{@spaces['B'][3].state} #{@spaces['B'][4].state}
+C #{@spaces['C'][1].state} #{@spaces['C'][2].state} #{@spaces['C'][3].state} #{@spaces['C'][4].state}
+D #{@spaces['D'][1].state} #{@spaces['D'][2].state} #{@spaces['D'][3].state} #{@spaces['D'][4].state}
+========="
+  end
+
+
   def add_hit
     @hits += 1
   end
@@ -30,18 +43,6 @@ class Board
 
   def shoot(position)
     @spaces[position[0]][position[1].to_i].shot
-  end
-
-  def display
-    update_board_if_ship_sunk
-"\n#{@name}
-=========
-. 1 2 3 4
-A #{@spaces['A'][1].state} #{@spaces['A'][2].state} #{@spaces['A'][3].state} #{@spaces['A'][4].state}
-B #{@spaces['B'][1].state} #{@spaces['B'][2].state} #{@spaces['B'][3].state} #{@spaces['B'][4].state}
-C #{@spaces['C'][1].state} #{@spaces['C'][2].state} #{@spaces['C'][3].state} #{@spaces['C'][4].state}
-D #{@spaces['D'][1].state} #{@spaces['D'][2].state} #{@spaces['D'][3].state} #{@spaces['D'][4].state}
-========="
   end
 
   def place_ship(raw_input)
