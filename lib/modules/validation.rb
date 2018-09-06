@@ -6,6 +6,23 @@ module Validation
     true
   end
 
+  def valid_form(input)
+    input.length == 5 && input[2] == " "
+  end
+
+
+  def valid_nums(input)
+    input.split(" ").select do |point|
+      if right_num?(point[1].to_i)
+        point[1]
+      end
+    end.length == 2
+  end
+  
+  def right_num?(number)
+    [1, 2, 3, 4].include?(number)
+  end
+
   def check_if_won(space)
     puts @text.sunk_ship(space.ship.name)
     if winning_shot
@@ -55,6 +72,11 @@ module Validation
     elsif space.state == 'H'
       player_hit_sequence(entry, space)
     end
+  end
+
+
+  def not_diagonal(input)
+    same_col(input) || same_row(input)
   end
   
   def computer_check_if_sunk(entry, space)

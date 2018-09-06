@@ -1,11 +1,11 @@
+require './lib/modules/validation'
+
 class Validate
+  include Validation
   def valid(input)
     valid_form(input) && valid_letts(input) && valid_nums(input)
   end
 
-  def valid_form(input)
-    input.length == 5 && input[2] == " "
-  end
 
   def valid_letts(input)
     input.split(" ").select do |point|
@@ -17,18 +17,6 @@ class Validate
 
   def letters
     ['A', 'B', 'C', 'D']
-  end
-
-  def valid_nums(input)
-    input.split(" ").select do |point|
-      if right_num?(point[1].to_i)
-        point[1]
-      end
-    end.length == 2
-  end
-
-  def right_num?(number)
-    [1, 2, 3, 4].include?(number)
   end
 
   def get_letts(input)
@@ -77,10 +65,6 @@ class Validate
     letters = (get_letts(input)[0]..get_letts(input)[1]).to_a
     nums = [get_nums(input)[0].to_s, get_nums(input)[0].to_s, get_nums(input)[0].to_s]
     letters.map.with_index {|let, idx| let + nums[idx]}
-  end
-
-  def not_diagonal(input)
-    same_col(input) || same_row(input)
   end
 
   def expand(input)
